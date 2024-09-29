@@ -522,9 +522,9 @@
             } else if (selected === 'Power-on Stall') {
                 currentManeuverImages = powerOnImages;
             }
-            counter = 0; // Reset counter
+            //counter = 0; // Reset counter
             //updateImages(); // Update images immediately
-            runInterval(counter, maxCount, currentReactionTime);
+            runInterval(0, 60000, currentReactionTime);
         });
 
         var timeSelect = document.getElementById('timeSelect');
@@ -532,7 +532,7 @@
             currentReactionTime = this.value;
             //counter = 0; // Reset counter
             //updateImages(); // Update images immediately
-            runInterval(counter, maxCount, currentReactionTime);
+            runInterval(0, 60000, currentReactionTime);
         });
 
        // updateImages(); // Initial display
