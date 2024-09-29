@@ -524,29 +524,34 @@
             }
             counter = 0; // Reset counter
             updateImages(); // Update images immediately
+            runInterval(counter, maxCount, currentReactionTime);
         });
 
         var timeSelect = document.getElementById('timeSelect');
         timeSelect.addEventListener('change', function() {
             currentReactionTime = this.value;
-            counter = 0; // Reset counter
+            //counter = 0; // Reset counter
             updateImages(); // Update images immediately
+            runInterval(counter, maxCount, currentReactionTime);
         });
 
         updateImages(); // Initial display
+        runInterval(0, 60000, currentReactionTime);
 
-        var counter = 0;
-        var maxCount = 60000; // For one minute (60 seconds)
+        //var counter = 0;
+        //var maxCount = 60000; // For one minute (60 seconds)
 
-        var intervalId = setInterval(function() {
-            if (counter >= maxCount) {
-                clearInterval(intervalId);
-            } else {
-                updateImages();
-                counter++;
-            }
-            console.log(currentReactionTime);
-        }, currentReactionTime);
+        function runInterval(counter, maxCount, currentReactionTime) {
+            var intervalId = setInterval(function() {
+                if (counter >= maxCount) {
+                    clearInterval(intervalId);
+                } else {
+                    updateImages();
+                    counter++;
+                }
+                
+            }, currentReactionTime);
+        }
 
     </script>
 </body>
