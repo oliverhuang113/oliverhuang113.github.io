@@ -523,7 +523,7 @@
                 currentManeuverImages = powerOnImages;
             }
             counter = 0; // Reset counter
-            updateImages(); // Update images immediately
+            //updateImages(); // Update images immediately
             runInterval(counter, maxCount, currentReactionTime);
         });
 
@@ -531,11 +531,11 @@
         timeSelect.addEventListener('change', function() {
             currentReactionTime = this.value;
             //counter = 0; // Reset counter
-            updateImages(); // Update images immediately
+            //updateImages(); // Update images immediately
             runInterval(counter, maxCount, currentReactionTime);
         });
 
-        updateImages(); // Initial display
+       // updateImages(); // Initial display
         runInterval(0, 60000, currentReactionTime);
 
         //var counter = 0;
