@@ -1,7 +1,536 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Random Photos Grid with Individual Lists</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            overflow: hidden;
+        }
+
+        .grid-item img {
+            width: 80%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+     <!-- Dropdown for maneuver selection -->
+     <div style="text-align: center; margin-bottom: 20px;">
+        <label for="maneuverSelect">Choose a Maneuver: </label>
+        <select id="maneuverSelect">
+            <option value="Traffic Pattern Crosswind Turn">Traffic Pattern Crosswind Turn</option>
+            <option value="Traffic Pattern Downwind Turn">Traffic Pattern Downwind Turn</option>
+            <option value="Traffic Pattern Base Turn">Traffic Base Crosswind Turn</option>
+            <option value="Traffic Pattern Final Turn">Traffic Final Crosswind Turn</option>
+            <option value="Steep Turn">Steep Turn</option>
+            <option value="Rectangular Course">Rectangular Course</option>
+            <option value="Turn Around a Point">Turn Around a Point</option>
+            <option value="S Turn">S Turn</option>
+            <option value="Slow Flight Clean">Slow Flight Clean</option>
+            <option value="Slow Flight Dirty">Slow Flight Dirty</option>
+            <option value="Power-off Stall">Power-off Stall</option>
+            <option value="Power-on Stall">Power-on Stall</option>
+        </select>
+    </div>
+
+    <div class="grid-container" id="grid-container">
+        <!-- Images will be inserted here -->
+    </div>
+
+    <script>
+        var tpCrosswindTurnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 70.png',
+                '../Aviation/Airspeed 75.png',
+                '../Aviation/Airspeed 80.png',
+                '../Aviation/Airspeed 85.png',
+                '../Aviation/Airspeed 90.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 1000.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var tpDownwindTurnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 70.png',
+                '../Aviation/Airspeed 75.png',
+                '../Aviation/Airspeed 80.png',
+                '../Aviation/Airspeed 85.png',
+                '../Aviation/Airspeed 90.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 1000.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var tpBaseTurnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 60.png',
+                '../Aviation/Airspeed 65.png',
+                '../Aviation/Airspeed 70.png',
+                '../Aviation/Airspeed 75.png',
+                '../Aviation/Airspeed 80.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 900.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var tpFinalTurnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 50.png',
+                '../Aviation/Airspeed 55.png',
+                '../Aviation/Airspeed 60.png',
+                '../Aviation/Airspeed 65.png',
+                '../Aviation/Airspeed 70.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 900.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var steepTurnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 85.png',
+                '../Aviation/Airspeed 90.png',
+                '../Aviation/Airspeed 95.png',
+                '../Aviation/Airspeed 100.png',
+            ],
+            imageList2: [
+                '../Aviation/Attitude 30.png',
+                '../Aviation/Attitude 40.png',
+                '../Aviation/Attitude 45.png'
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 4000.png',
+                '../Aviation/Altimeter 3900.png',
+                '../Aviation/Altimeter 3920.png',
+                '../Aviation/Altimeter 3940.png',
+                '../Aviation/Altimeter 3960.png',
+                '../Aviation/Altimeter 3980.png',
+                '../Aviation/Altimeter 4020.png',
+                '../Aviation/Altimeter 4040.png',
+                '../Aviation/Altimeter 4060.png',
+                '../Aviation/Altimeter 4080.png',
+                '../Aviation/Altimeter 4100.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var rectCourseImages = {
+           imageList1: [
+                '../Aviation/Airspeed 85.png',
+                '../Aviation/Airspeed 90.png',
+                '../Aviation/Airspeed 95.png',
+                '../Aviation/Airspeed 100.png',
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png'
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 1000.png',
+                '../Aviation/Altimeter 900.png',
+                '../Aviation/Altimeter 920.png',
+                '../Aviation/Altimeter 940.png',
+                '../Aviation/Altimeter 960.png',
+                '../Aviation/Altimeter 980.png',
+                '../Aviation/Altimeter 1020.png',
+                '../Aviation/Altimeter 1040.png',
+                '../Aviation/Altimeter 1060.png',
+                '../Aviation/Altimeter 1080.png',
+                '../Aviation/Altimeter 1100.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var turnPointImages = {
+            imageList1: [
+                '../Aviation/Airspeed 85.png',
+                '../Aviation/Airspeed 90.png',
+                '../Aviation/Airspeed 95.png',
+                '../Aviation/Airspeed 100.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png'
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 1000.png',
+                '../Aviation/Altimeter 900.png',
+                '../Aviation/Altimeter 920.png',
+                '../Aviation/Altimeter 940.png',
+                '../Aviation/Altimeter 960.png',
+                '../Aviation/Altimeter 980.png',
+                '../Aviation/Altimeter 1020.png',
+                '../Aviation/Altimeter 1040.png',
+                '../Aviation/Altimeter 1060.png',
+                '../Aviation/Altimeter 1080.png',
+                '../Aviation/Altimeter 1100.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var STurnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 85.png',
+                '../Aviation/Airspeed 90.png',
+                '../Aviation/Airspeed 95.png',
+                '../Aviation/Airspeed 100.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 10.png',
+                '../Aviation/Attitude 20.png',
+                '../Aviation/Attitude 30.png'
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 1000.png',
+                '../Aviation/Altimeter 900.png',
+                '../Aviation/Altimeter 920.png',
+                '../Aviation/Altimeter 940.png',
+                '../Aviation/Altimeter 960.png',
+                '../Aviation/Altimeter 980.png',
+                '../Aviation/Altimeter 1020.png',
+                '../Aviation/Altimeter 1040.png',
+                '../Aviation/Altimeter 1060.png',
+                '../Aviation/Altimeter 1080.png',
+                '../Aviation/Altimeter 1100.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var slowCleanImages = {
+            imageList1: [
+                '../Aviation/Airspeed 55.png',
+                '../Aviation/Airspeed 50.png',
+                '../Aviation/Airspeed 60.png',
+            ],
+            imageList2: [
+                '../Aviation/Attitude 0.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 3500.png',
+                '../Aviation/Altimeter 3400.png',
+                '../Aviation/Altimeter 3420.png',
+                '../Aviation/Altimeter 3440.png',
+                '../Aviation/Altimeter 3460.png',
+                '../Aviation/Altimeter 3480.png',
+                '../Aviation/Altimeter 3520.png',
+                '../Aviation/Altimeter 3540.png',
+                '../Aviation/Altimeter 3560.png',
+                '../Aviation/Altimeter 3580.png',
+                '../Aviation/Altimeter 3600.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+                '../Aviation/Heading 350.png',
+                '../Aviation/Heading 355.png',
+                '../Aviation/Heading 005.png',
+                '../Aviation/Heading 010.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var slowDirtyImages = {
+            imageList1: [
+                '../Aviation/Airspeed 50.png',
+                '../Aviation/Airspeed 45.png',
+                '../Aviation/Airspeed 55.png',
+            ],
+            imageList2: [
+                '../Aviation/Attitude 0.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 3500.png',
+                '../Aviation/Altimeter 3400.png',
+                '../Aviation/Altimeter 3420.png',
+                '../Aviation/Altimeter 3440.png',
+                '../Aviation/Altimeter 3460.png',
+                '../Aviation/Altimeter 3480.png',
+                '../Aviation/Altimeter 3520.png',
+                '../Aviation/Altimeter 3540.png',
+                '../Aviation/Altimeter 3560.png',
+                '../Aviation/Altimeter 3580.png',
+                '../Aviation/Altimeter 3600.png',
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+                '../Aviation/Heading 350.png',
+                '../Aviation/Heading 355.png',
+                '../Aviation/Heading 005.png',
+                '../Aviation/Heading 010.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var powerOffImages = {
+            imageList1: [
+                '../Aviation/Airspeed 60.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 0.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 4000.png'
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+                '../Aviation/Heading 350.png',
+                '../Aviation/Heading 355.png',
+                '../Aviation/Heading 005.png',
+                '../Aviation/Heading 010.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var powerOnImages = {
+            imageList1: [
+                '../Aviation/Airspeed 60.png'
+            ],
+            imageList2: [
+                '../Aviation/Attitude 0.png',
+            ],
+            imageList3: [
+                '../Aviation/Altimeter 4000.png'
+            ],
+            imageList4: [
+                '../Aviation/Turn Coordinator Center.png',
+                '../Aviation/Turn Coordinator Left.png',
+                '../Aviation/Turn Coordinator Right.png',
+            ],
+            imageList5: [
+                '../Aviation/Heading 360.png',
+                '../Aviation/Heading 350.png',
+                '../Aviation/Heading 355.png',
+                '../Aviation/Heading 005.png',
+                '../Aviation/Heading 010.png',
+            ],
+            imageList6: [
+                
+            ]
+        };
+
+        var currentManeuverImages = tpCrosswindTurnImages; // Default to tpCrossTurn
+
+        function updateImages() {
+            var gridContainer = document.getElementById('grid-container');
+            gridContainer.innerHTML = ''; // Clear existing images
+
+            // Array of individual image lists
+            //var imageLists = [imageList1, imageList2, imageList3, imageList4, imageList5, imageList6];
+            var imageLists = [
+                currentManeuverImages.imageList1,
+                currentManeuverImages.imageList2,
+                currentManeuverImages.imageList3,
+                currentManeuverImages.imageList4,
+                currentManeuverImages.imageList5,
+                currentManeuverImages.imageList6
+            ];
+
+            // Loop through each image position
+            for (var i = 0; i < 6; i++) {
+                var currentImageList = imageLists[i];
+                // Randomly select an image from the current image list
+                var randomIndex = Math.floor(Math.random() * currentImageList.length);
+                var selectedImage = currentImageList[randomIndex];
+
+                // Create grid item and image element
+                var gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+
+                var imgElement = document.createElement('img');
+                imgElement.src = selectedImage;
+
+                gridItem.appendChild(imgElement);
+                gridContainer.appendChild(gridItem);
+            }
+        }
+
+        // Event listener for dropdown change
+        var maneuverSelect = document.getElementById('maneuverSelect');
+        maneuverSelect.addEventListener('change', function() {
+            var selected = this.value;
+            if (selected === 'Traffic Pattern Crosswind Turn') {
+                currentManeuverImages = tpCrosswindTurnImages;
+            } else if (selected === 'Traffic Pattern Downwind Turn') {
+                currentManeuverImages = tpDownwindTurnImages;
+            } else if (selected === 'Traffic Pattern Base Turn') {
+                currentManeuverImages = tpBaseTurnImages;
+            } else if (selected === 'Traffic Pattern Final Turn') {
+                currentManeuverImages = tpFinalTurnImages;
+            } else if (selected === 'Steep Turn') {
+                currentManeuverImages = steepTurnImages;
+            } else if (selected === 'Rectangular Course') {
+                currentManeuverImages = rectCourseImages;
+            } else if (selected === 'Turn Around a Point') {
+                currentManeuverImages = turnPointImages;
+            } else if (selected === 'S Turn') {
+                currentManeuverImages = STurnImages;
+            } else if (selected === 'Slow Flight Clean') {
+                currentManeuverImages = slowCleanImages;
+            } else if (selected === 'Slow Flight Dirty') {
+                currentManeuverImages = slowDirtyImages;
+            } else if (selected === 'Power-off Stall') {
+                currentManeuverImages = powerOffImages;
+            } else if (selected === 'Power-on Stall') {
+                currentManeuverImages = powerOnImages;
+            }
+            counter = 0; // Reset counter
+            updateImages(); // Update images immediately
+        });
+
+        updateImages(); // Initial display
+
+        var counter = 0;
+        var maxCount = 60000; // For one minute (60 seconds)
+
+        var intervalId = setInterval(function() {
+            if (counter >= maxCount) {
+                clearInterval(intervalId);
+            } else {
+                updateImages();
+                counter++;
+            }
+        }, 750);
+
+    </script>
 </body>
 </html>
